@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { CustomWinstonLogger } from 'src/logger/custom_winston_logger.class';
+import { CustomWinstonLogger } from 'src/logger/custom_winston_logger.service';
 
 @Controller('v1/example')
 export class ExampleLoggingController {

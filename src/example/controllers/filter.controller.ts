@@ -17,5 +17,17 @@ export class ExampleFilterController {
     // If object, then the json body is overwritten with the object
     throw new ForbiddenException({ test: 'asfasf' });
   }
+
+  @Get('throw3')
+  throw3() {
+    // Should be caught by uncaught.filter.ts
+    throw new Error('random error');
+  }
+
+  @Get('throw4')
+  throw4() {
+    // Should be caught by uncaught.filter.ts
+    throw 124;
+  }
 }
 
