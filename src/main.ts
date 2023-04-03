@@ -14,6 +14,7 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
+  app.setGlobalPrefix('api');
   app.enableShutdownHooks();
   const logger = await app.resolve<CustomWinstonLogger>(CustomWinstonLogger);
   // Filters are checked in reverse order, so the last filter
