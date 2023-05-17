@@ -1,6 +1,7 @@
 *.cert
 *.cer
-.env
+.env.development
+.env.production
 __azurite*
 
 # compiled output

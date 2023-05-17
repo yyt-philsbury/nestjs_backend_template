@@ -8,6 +8,9 @@ generator client {
 datasource db {
     provider = "sqlite"
     url      = "file:./db/database.db"
+    // on production you need an absolute path unless you're
+    // replacing the database every deployment
+    // url = "file:/dbs/be_template/database.db"
 }
 
 model test_table {
