@@ -8,8 +8,11 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "deploy:dev": "cross-env NODE_ENV=development pm2 start ecosystem.config.js",
+    "deploy:prod": "cross-env NODE_ENV=development pm2 start ecosystem.config.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "generate": "prisma generate",
+    "postinstall": "generate",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "sort": "sort-package-json",
     "start": "cross-env NODE_ENV=development nest start",
@@ -20,9 +23,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:watch": "jest --watch",
-    "deploy:dev": "cross-env NODE_ENV=development pm2 start ecosystem.config.js",
-    "deploy:prod": "cross-env NODE_ENV=development pm2 start ecosystem.config.js"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@nestjs/axios": "2.0.0",
@@ -71,3 +72,4 @@
     "typescript": "5.0.3"
   }
 }
+
