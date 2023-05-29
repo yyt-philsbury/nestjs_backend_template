@@ -14,8 +14,19 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  // !!! FULLY OPEN CORS
-  app.enableCors();
+  if (process.env['NODE_ENV'] === 'development') {
+    app.enableCors();
+  }
+  if (process.env['NODE_ENV'] === 'production') {
+    app.enableCors({
+      origin: [
+        'https://subdomain.saasdq.com',
+        'https://www.subdomain.saasdq.com',
+        'https://releasecandidate.subdomain.saasdq.com',
+        'https://www.releasecandidate.subdomain.saasdq.com',
+      ],
+    });
+  }
 
   app.setGlobalPrefix('api');
   app.enableShutdownHooks();
