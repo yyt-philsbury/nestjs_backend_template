@@ -14,6 +14,9 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
+  // !!! FULLY OPEN CORS
+  app.enableCors();
+
   app.setGlobalPrefix('api');
   app.enableShutdownHooks();
   const logger = await app.resolve<CustomWinstonLogger>(CustomWinstonLogger);
