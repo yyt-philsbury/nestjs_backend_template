@@ -6,7 +6,13 @@ import { LoggerModule } from 'src/logger/logger.module';
 @Global()
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath: `.env.${process.env.NODE_ENV}` }),
+    // loads .env into process.env
+    // access with either process.env['asfa']
+    // or access via ConfigService which is exported by ConfigModule
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV}`,
+    }),
     ExampleModule,
     LoggerModule,
   ],
