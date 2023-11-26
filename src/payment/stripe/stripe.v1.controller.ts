@@ -41,18 +41,24 @@ export class StripeV1Controller {
   }
 
   /**
-   * Customers choose what to pay. Gets a payment link where they can choose.
-   * Payment link attaches app internal customer id
+   * Customers choose a product to pay for, accepts an array of pricing ids from
+   * products
    *
    * @returns
    */
-  @Post('donation/payment_link')
-  async createDonationPaymentLink(@Query('user_id') user_id: string) {
+  @Post('payment_link')
+  async createPaymentLink(@Query('user_id') user_id: string) {
     const user = await this.prismaClient.users.findUniqueOrThrow({
       where: {
         id: user_id,
       },
     });
+
+    const paymentLink = await this.stripe.paymentLinks.create({
+      line_items,
+    });
+
+    return;
   }
 }
 
