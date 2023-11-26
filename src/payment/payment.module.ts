@@ -1,9 +1,13 @@
-import { Global, Module } from '@nestjs/common';
-import { StripeController } from 'src/payment/stripe/stripe.controller';
+import { Module } from '@nestjs/common';
+import { StripeV1Controller } from 'src/payment/stripe/stripe.v1.controller';
+/**
+ * Folder structure:
+ * controllers: all HTTPs endpoints
+ * services: Internal modules to perform work
+ * exports: Exposed code to other internal modules
+ */
 
-@Global()
 @Module({
-  controllers: [StripeController],
+  controllers: [StripeV1Controller],
 })
 export class PaymentModule {}
-
