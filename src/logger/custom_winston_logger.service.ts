@@ -41,6 +41,11 @@ const winstonLogger = winston.createLogger({
  * function to call winston appropriate function
  *
  * All other transports handled by winston.
+ *
+ * We use transient scope to ensure each provider gets its own instance
+ * as each instance can they call .setContext()
+ *
+ * this is best practice https://docs.nestjs.com/techniques/logger#injecting-a-custom-logger
  */
 @Injectable({ scope: Scope.TRANSIENT })
 export class CustomWinstonLogger extends ConsoleLogger {

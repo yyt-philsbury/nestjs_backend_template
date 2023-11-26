@@ -2,6 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ExampleModule } from 'src/example/example.module';
 import { LoggerModule } from 'src/logger/logger.module';
+import { PaymentModule } from 'src/payment/payment.module';
 
 @Global()
 @Module({
@@ -15,6 +16,7 @@ import { LoggerModule } from 'src/logger/logger.module';
     }),
     ExampleModule,
     LoggerModule,
+    PaymentModule,
   ],
 })
 export class AppModule {}
